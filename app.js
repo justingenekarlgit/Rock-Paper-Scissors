@@ -34,6 +34,9 @@ function win(userChoice, computerChoice) {
   )}${smallCompWord} You won!`;
   userChoice_div.classList.add("green-glow");
   setTimeout(() => userChoice_div.classList.remove("green-glow"), 300);
+  if (userScore === 5 ) {
+      
+  }
 }
 
 function lose(userChoice, computerChoice) {
