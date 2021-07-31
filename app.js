@@ -26,11 +26,14 @@ function win(userChoice, computerChoice) {
   computerScore_span.innerHTML = computerScore;
   const smallUserWord = "user".fontsize(3).sup();
   const smallCompWord = "comp".fontsize(3).sup();
+  const userChoice_div = document.getElementById(userChoice);
   result_p.innerHTML = `${convertToWord(
     userChoice
-  )}${smallUserWord} loses to ${convertToWord(
+  )}${smallUserWord} beats ${convertToWord(
     computerChoice
-  )}${smallCompWord}. You lost..`;
+  )}${smallCompWord} You won!`;
+  userChoice_div.classList.add("green-glow");
+  setTimeout(() => userChoice_div.classList.remove("green-glow"), 300);
 }
 
 function lose(userChoice, computerChoice) {
@@ -39,24 +42,29 @@ function lose(userChoice, computerChoice) {
   computerScore_span.innerHTML = computerScore;
   const smallUserWord = "user".fontsize(3).sup();
   const smallCompWord = "comp".fontsize(3).sup();
+  const userChoice_div = document.getElementById(userChoice);
   result_p.innerHTML = `${convertToWord(
     userChoice
   )}${smallUserWord} beats ${convertToWord(
     computerChoice
-  )}${smallCompWord}. You won!`;
+  )}${smallCompWord} You lost..`;
+  userChoice_div.classList.add("red-glow");
+  setTimeout(() => userChoice_div.classList.remove("red-glow"), 300);
 }
 
 function tie(userChoice, computerChoice) {
-  userScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
   const smallUserWord = "user".fontsize(3).sup();
   const smallCompWord = "comp".fontsize(3).sup();
+  const userChoice_div = document.getElementById(userChoice);
   result_p.innerHTML = `${convertToWord(
     userChoice
   )}${smallUserWord} ties with ${convertToWord(
     computerChoice
-  )}${smallCompWord}. It is a tie!`;
+  )}${smallCompWord} It is a tie!`;
+  userChoice_div.classList.add("grey-glow");
+  setTimeout(() => userChoice_div.classList.remove("grey-glow"), 300);
 }
 
 function game(userChoice) {
@@ -68,8 +76,8 @@ function game(userChoice) {
       win(userChoice, computerChoice);
       break;
     case "rp":
-    case "pr":
-    case "sp":
+    case "ps":
+    case "sr":
       lose(userChoice, computerChoice);
       break;
     case "rr":
